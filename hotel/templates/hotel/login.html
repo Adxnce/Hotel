@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center min-vh-100" style="background: linear-gradient(135deg, #fcf2e0 0%, #cfdef3 100%);">
+        <div class="card shadow-lg p-4 border-0 rounded-4" style="min-width: 350px; max-width: 400px; width: 100%;">
+            <div class="text-center mb-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png" alt="Hotel Logo" width="64" height="64" class="mb-2" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                <h2 class="mb-2 fw-bold">Iniciar Sesión</h2>
+                <p class="text-muted mb-0">Bienvenido, por favor ingrese sus datos</p>
+            </div>
+
+            <!-- Contenedor para mostrar mensajes de error -->
+            <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
+
+            <form id="login-form" method="post">
+                <!-- El token CSRF es crucial para que AJAX lo pueda leer -->
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control rounded-pill" id="username" name="username" placeholder="admin" required autofocus>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control rounded-pill" id="password" name="password" placeholder="password123" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 rounded-pill shadow-sm">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Incluimos la librería jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- script personalizado -->
+    <script src="{% static 'hotel/js/login.js' %}"></script>
+
+</body>
+</html>
