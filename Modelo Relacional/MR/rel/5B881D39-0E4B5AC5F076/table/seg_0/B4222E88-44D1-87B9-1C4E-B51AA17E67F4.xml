@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4222E88-44D1-87B9-1C4E-B51AA17E67F4" name="HOTEL">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>32B3C7F0-9EF5-9BF4-4822-35ACCB63D5D1</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="hotel_id" id="C5195B3C-39DD-7F15-CB3E-21364FF83C04">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>4C84F7FA-145B-108B-9D4A-BB70FC9D8F2B</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="8DE1184A-1BF4-C7CE-1F32-FB477228FE85">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>28A1F851-6DB8-7CA8-140D-61965323856E</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="direccion" id="AC65AC08-B5E0-FD43-3A88-9556BD5F7E88">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>20D9CFCF-8413-75B7-5C1E-90D6C05F9715</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="categoria" id="A70DD172-0B36-4E6B-AD3D-8780B9AEC33D">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>983D516A-6441-DDB5-1E37-82B196353C4D</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EF9F5BCD-AEE7-195E-0674-39DB62A14844" name="HOTEL_PK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>347F6167-C5EA-A96A-5F1B-6A3AF53250CD</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C5195B3C-39DD-7F15-CB3E-21364FF83C04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2EF9F157-478E-DF2D-5817-0AC7FC1C11C6" name="HABITACION">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:18:52 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="habitacion_id" id="B121F798-D575-6421-0742-31C84D08863C">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:20:26 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo" id="6EDEEED5-5433-D01A-22C5-2E427CC81F26">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:20:29 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="capacidad" id="4E50223F-0965-AEC2-19CA-B2DCB58DC057">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:20:29 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="precio" id="AB6865F3-7B3C-CA16-F0C9-307E74DAEF08">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:20:29 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="reserva_id" id="AC37AE58-14E0-58E3-8E7F-FFDD8B3A2A79">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:26:55 UTC</createdTime>
+<generatorID>809F0E3D-D333-8C0A-9CC7-DE5E7AB43380</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<referedAttribute>A79CE7AF-D7FF-9098-4BF2-4548662A16A1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A7712C29-6936-3616-C370-E068E42144A2" name="HABITACION PK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:20:38 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B121F798-D575-6421-0742-31C84D08863C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

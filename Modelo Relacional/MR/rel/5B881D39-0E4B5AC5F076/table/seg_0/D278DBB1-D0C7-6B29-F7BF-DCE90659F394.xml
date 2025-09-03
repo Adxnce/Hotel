@@ -1,0 +1,132 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D278DBB1-D0C7-6B29-F7BF-DCE90659F394" name="RESERVA">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>91634BDB-6848-8297-7768-915E8454B8EB</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="reserva_id" id="C09EBEDB-7424-5C7A-5E34-31C54BF62E34">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>A79CE7AF-D7FF-9098-4BF2-4548662A16A1</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_entrada" id="B73DC008-3582-947E-D847-C410C9FFEB98">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>23A6DF2F-EE87-3A27-C834-A6BB017838C4</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_salida" id="96807F3E-40BA-2E06-5DC7-7BD0A48B6627">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>95FF62E4-198A-4A69-E20C-93171DD7242D</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cantidad_personas" id="F0E23FE6-36A0-6659-2DF4-F188B07231B8">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>D96E0A87-69B3-8600-77E9-4F6FE2D2A12A</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLIENTE_cliente_id" id="B7BA1BA9-3763-A8FA-052A-79DBAF9C1AD0">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>FE9446B4-2BE3-EF7A-F426-1E7590B59DA9</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5C1D85B1-95C7-95A1-7BA0-5C2850C3B58E" referredColumn="84F74DBB-F0AB-ABD3-AA19-061670B8B832"/>
+</associations>
+</Column>
+<Column name="HABITACION_habitacion_id" id="83B64581-5098-ACBD-6080-7A0607765E37">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>9A37A341-98B0-5F82-8D8A-2BFD4C367D7E</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1BE964C1-3E22-DD2B-08C9-E48F9A48D344" referredColumn="CB5CF449-75E8-0433-98C0-674ECAD696D3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D6D63191-9730-AA6A-6B99-9393F910F18D" name="RESERVA_PK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>E7F28B5B-3386-53DC-9BA2-DE459BC875BD</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C09EBEDB-7424-5C7A-5E34-31C54BF62E34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2A60A60C-5507-7479-75E5-C631977963FD" name="RESERVA__IDX">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:17 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>809F0E3D-D333-8C0A-9CC7-DE5E7AB43380</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="83B64581-5098-ACBD-6080-7A0607765E37"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="755821E1-382D-0F86-ECB0-1A9263A21524" name="RESERVA_CLIENTE_FK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:17 UTC</createdTime>
+<generatorID>0B3D68B2-38A8-E265-6BFB-E0095A958A15</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B7BA1BA9-3763-A8FA-052A-79DBAF9C1AD0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3202C1A5-B279-D628-C193-EE8BE631C0F4" name="RESERVA_HABITACION_FK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:17 UTC</createdTime>
+<generatorID>809F0E3D-D333-8C0A-9CC7-DE5E7AB43380</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="83B64581-5098-ACBD-6080-7A0607765E37"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
