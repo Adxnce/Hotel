@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B12EA481-2094-D61F-E823-C4BB53A0A1C5" name="CLIENTE">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>F4D3626F-1A6F-9219-D5D5-8335F734D4E5</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cliente_id" id="84F74DBB-F0AB-ABD3-AA19-061670B8B832">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>CD339E29-752C-27A4-0ACE-C6B13B2C24F0</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre_1" id="35708BEA-29F7-A7ED-640C-FEAE98B95C3C">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>82764D5B-3090-97C6-DB97-E5F4163032AD</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido" id="084EA7F3-0972-42EE-8B58-E6128D6B7056">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>97F1C68B-2E83-50CF-92B5-D9DAB5EDDADD</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correo_electronico" id="9C196607-8741-2360-611D-6AA29C69A55B">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>59CBC8BB-8108-29D5-1867-41E6C4E16BB6</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="0043C474-592E-7179-F111-D2F0E5CF5373">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>474FE127-5AB0-4A44-9DC5-52CE6B373ABD</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AEBA0BE7-D4AB-E9EA-0C4B-C636C1C53C3D" name="CLIENTE_PK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>89AA5408-E60A-CCFD-5520-736F2C19A58D</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="84F74DBB-F0AB-ABD3-AA19-061670B8B832"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
