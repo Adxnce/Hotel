@@ -11,7 +11,7 @@ $(document).ready(function() {
         // Hacemos la petición AJAX
         $.ajax({
             type: 'POST',
-            url: 'login/',
+            url: '/login/',
             data: $(this).serialize(),
             
             // CAMBIO CLAVE: Añadimos el token CSRF a los encabezados de la petición
@@ -22,7 +22,6 @@ $(document).ready(function() {
             success: function(response) {
                 // Si la respuesta del servidor contiene un 'message', la autenticación fue exitosa
                 if (response.message) {
-                    // Redirigimos al home
                     window.location.href = '/home/';
                 }
             },

@@ -20,8 +20,7 @@ $(document).ready(function() {
                 xhr.setRequestHeader('X-CSRFToken', csrfToken);
             },
             success: function(response) {
-                // Si la respuesta es exitosa, redirigimos o mostramos un mensaje
-                alert("Registro exitoso. Ahora puedes iniciar sesión.");
+                window.location.href = '/login/';
             },
             error: function(xhr) {
                 // Si hay un error, mostramos el mensaje correspondiente

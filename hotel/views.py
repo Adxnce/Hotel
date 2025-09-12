@@ -11,24 +11,22 @@ def home_view(request):
 
 
 def login_view(request):
-    # Usuario mock
-    user_mock = {
-        'username': 'admin',
-        'password': 'password123'
-    }
+    
 
     if request.method == 'POST':
         
         # Recuperamos los datos del formulario enviado por .ajax
-        username = request.POST.get('username')
+        username = request.POST.get('email')
         password = request.POST.get('password')
-
-        if username == user_mock['username'] and password == user_mock['password']:
-            
-            # Si las credenciales son correctas, enviamos un JSON de éxito
-            return JsonResponse({'message': 'Inicio de sesión exitoso'}, status=200)
+        print(f"Intento de login con usuario: {username}")
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                # Si las credenciales son correctas, enviamos un JSON de éxito
+                return JsonResponse({'message': 'Inicio de sesión exitoso'}, status=200)
+        except User.DoesNotExist:
+            pass
         else:
-            
             # Si son incorrectas, error
             return JsonResponse({'error': 'Credenciales inválidas. Inténtalo de nuevo.'}, status=401)
     
