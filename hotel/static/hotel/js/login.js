@@ -11,7 +11,7 @@ $(document).ready(function() {
         // Hacemos la petición AJAX
         $.ajax({
             type: 'POST',
-            url: '',
+            url: 'login/',
             data: $(this).serialize(),
             
             // CAMBIO CLAVE: Añadimos el token CSRF a los encabezados de la petición
