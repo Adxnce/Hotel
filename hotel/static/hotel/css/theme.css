@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+:root{
+  --coffee-50:#f7efea;
+  --coffee-100:#ead9cc;
+  --coffee-200:#d7b9a1;
+  --coffee-300:#c39675;
+  --coffee-400:#ae744d;
+  --coffee-500:#935b33; /* primary */
+  --coffee-600:#7a4929;
+  --coffee-700:#5f3a22; /* dark */
+  --coffee-800:#4b2f1c;
+  --coffee-900:#392417; /* darkest */
+
+  /* Map to Bootstrap CSS variables where possible */
+  --bs-primary: var(--coffee-500);
+  --bs-primary-rgb: 147,91,51;
+  --bs-link-color: var(--coffee-500);
+  --bs-link-hover-color: #7a4929;
+}
+
+/* Buttons */
+.btn-primary{
+  --bs-btn-bg: var(--coffee-500);
+  --bs-btn-border-color: var(--coffee-500);
+  --bs-btn-hover-bg: var(--coffee-600);
+  --bs-btn-hover-border-color: var(--coffee-600);
+  --bs-btn-active-bg: var(--coffee-700);
+  --bs-btn-active-border-color: var(--coffee-700);
+}
+
+/* Navbar */
+.navbar-dark.bg-dark{
+  background-color: var(--coffee-700) !important;
+}
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link,
+.navbar-dark .navbar-toggler{
+  color: #f7efea;
+}
+
+/* Brand typography */
+.navbar-brand{
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+.navbar-dark .nav-link.active,
+.navbar-dark .nav-link:focus,
+.navbar-dark .nav-link:hover{
+  color: var(--coffee-100);
+}
+
+/* Cards and accents */
+.card{
+  border: 1px solid rgba(73,53,34,0.08);
+}
+.card .card-title{
+  color: var(--coffee-700);
+}
+.card .card-footer{
+  background-color: rgba(147,91,51,0.05) !important;
+}
+
+/* Utilities */
+.text-coffee{ color: var(--coffee-700) !important; }
+.bg-coffee{ background-color: var(--coffee-700) !important; color:#f7efea; }
+.bg-coffee-50{ background-color: var(--coffee-50) !important; }
+.bg-coffee-gradient{
+  background: linear-gradient(135deg, var(--coffee-50) 0%, #e8d8c8 50%, #cfb79a 100%);
+}
+
+/* Hero overlay helper (if used as class) */
+.hero-overlay{
+  background-color: rgba(60,40,20,0.55);
+}
+
+/* Feature icon color to match theme */
+.features-icon{ color: var(--coffee-500) !important; }
+
+/* Footer */
+footer.bg-dark{ background-color: var(--coffee-800) !important; }
+footer a{ color: var(--coffee-100); }
+footer a:hover{ color: #fff; }

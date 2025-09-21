@@ -1,0 +1,340 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block title %}Hotel Pacific Reef - Inicio{% endblock %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <header class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Bienvenido a Hotel Pacific Reef</h1>
+            <p>Experimenta el confort y la elegancia en cada rincón</p>
+            <a href="#habitaciones" class="btn">Ver Habitaciones</a>
+        </div>
+    </header>
+
+    <!-- Sección de Habitaciones -->
+    <section class="seccion" id="habitaciones">
+        <div class="container">
+            <h2>Nuestras Habitaciones</h2>
+            <div class="habitaciones-grid">
+                <div class="habitacion" data-tipo="sencilla" data-precio="100">
+                    <div class="habitacion-img"></div>
+                    <div class="habitacion-info">
+                        <h3>Habitación Sencilla</h3>
+                        <p>Perfecta para viajeros individuales que buscan comodidad a un precio accesible.</p>
+                        <ul class="servicios-lista">
+                            <li><i class="fas fa-wifi"></i> WiFi gratuito</li>
+                            <li><i class="fas fa-tv"></i> TV por cable</li>
+                            <li><i class="fas fa-coffee"></i> Cafetera</li>
+                        </ul>
+                        <div class="precio">
+                            <span>$100</span> / noche
+                            <button class="btn-agregar">Reservar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="habitacion destacada" data-tipo="doble" data-precio="180">
+                    <div class="etiqueta-destacado">¡Más popular!</div>
+                    <div class="habitacion-img"></div>
+                    <div class="habitacion-info">
+                        <h3>Habitación Doble</h3>
+                        <p>Amplio espacio para dos personas con todas las comodidades para una estancia inolvidable.</p>
+                        <ul class="servicios-lista">
+                            <li><i class="fas fa-wifi"></i> WiFi gratuito</li>
+                            <li><i class="fas fa-tv"></i> TV pantalla plana</li>
+                            <li><i class="fas fa-coffee"></i> Cafetera</li>
+                            <li><i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                        </ul>
+                        <div class="precio">
+                            <span>$180</span> / noche
+                            <button class="btn-agregar">Reservar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="habitacion" data-tipo="suite" data-precio="300">
+                    <div class="habitacion-img"></div>
+                    <div class="habitacion-info">
+                        <h3>Suite de Lujo</h3>
+                        <p>Amplia suite con sala de estar separada y vistas espectaculares de la ciudad.</p>
+                        <ul class="servicios-lista">
+                            <li><i class="fas fa-wifi"></i> WiFi gratuito</li>
+                            <li><i class="fas fa-tv"></i> TV pantalla plana 4K</li>
+                            <li><i class="fas fa-coffee"></i> Cafetera de lujo</li>
+                            <li><i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                            <li><i class="fas fa-wine-glass-alt"></i> Minibar</li>
+                            <li><i class="fas fa-hot-tub"></i> Bañera de hidromasaje</li>
+                        </ul>
+                        <div class="precio">
+                            <span>$300</span> / noche
+                            <button class="btn-agregar">Reservar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="seccion servicios" id="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Restaurante</h3>
+                    <p>Disfruta de nuestra exquisita gastronomía en nuestro restaurante gourmet.</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-swimming-pool"></i>
+                    <h3>Piscina</h3>
+                    <p>Relájate en nuestra piscina climatizada con vista panorámica.</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-spa"></i>
+                    <h3>Spa</h3>
+                    <p>Mímate con nuestros tratamientos de spa y masajes relajantes.</p>
+                </div>
+                <div class="servicio">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Gimnasio</h3>
+                    <p>Mantente en forma en nuestro gimnasio totalmente equipado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="seccion contacto" id="contacto">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <div class="contacto-grid">
+                <div class="info-contacto">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Condell 123, Providencia, Santiago</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-envelope"></i> info@hotelpacificreef.cl</p>
+                    <div class="redes-sociales">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form class="formulario-contacto">
+                    <h3>Envíanos un Mensaje</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrito de Compras -->
+    <div class="carrito-lateral" id="carrito-lateral">
+        <div class="carrito-cabecera">
+            <h3>Tu Carrito</h3>
+            <button id="cerrar-carrito">&times;</button>
+        </div>
+        <div class="carrito-contenido" id="items-carrito">
+            <p class="carrito-vacio">El carrito está vacío</p>
+        </div>
+        <div class="carrito-total">
+            <h4>Total: $<span id="total">0</span></h4>
+            <button id="vaciar-carrito" class="btn-secundario">Vaciar Carrito</button>
+            <button id="finalizar-compra" class="btn">Finalizar Compra</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-contenido">
+                <div class="footer-seccion">
+                    <h4>Hotel Pacific Reef</h4>
+                    <p>Tu hogar lejos de casa con el mejor servicio y comodidad.</p>
+                </div>
+                <div class="footer-seccion">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#habitaciones">Habitaciones</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-seccion">
+                    <h4>Contacto</h4>
+                    <p>Av. Condell 123, Providencia, Santiago</p>
+                    <p>+1 234 567 890</p>
+                    <p>info@hotelpacificreef.cl</p>
+                </div>
+            </div>
+            <div class="footer-derechos">
+                <p>&copy; 2025 Hotel Pacific Reef. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}
+{% block extra_css %}
+    <style>
+        /* Estilos para las imágenes de las habitaciones */
+        .habitacion:nth-child(1) .habitacion-img {
+            background-image: url('{% static "img/habitacion1.jpg" %}')
+        }
+        .habitacion:nth-child(2) .habitacion-img {
+            background-image: url('{% static "img/habitacion2.jpg" %}')
+        }
+        .habitacion:nth-child(3) .habitacion-img {
+            background-image: url('{% static "img/habitacion3.jpg" %}')
+        }
+    </style>
+{% endblock %}
+{% block extra_js %}
+<script>
+    // Función para manejar el carrito
+    function manejarCarrito() {
+        // Abrir/cerrar carrito
+        const abrirCarrito = document.getElementById('abrir-carrito');
+        const carritoLateral = document.getElementById('carrito-lateral');
+        const cerrarCarrito = document.getElementById('cerrar-carrito');
+        const overlay = document.getElementById('overlay');
+        const botonesAgregar = document.querySelectorAll('.btn-agregar');
+        
+        if (!abrirCarrito || !carritoLateral || !cerrarCarrito || !overlay) {
+            console.error('No se encontraron todos los elementos necesarios para el carrito');
+            return;
+        }
+        
+        abrirCarrito.addEventListener('click', () => {
+            carritoLateral.classList.add('activo');
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        cerrarCarrito.addEventListener('click', () => {
+            carritoLateral.classList.remove('activo');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            carritoLateral.classList.remove('activo');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Cerrar carrito al hacer clic en Finalizar Compra
+        const finalizarCompraBtn = document.getElementById('finalizar-compra');
+        if (finalizarCompraBtn) {
+            finalizarCompraBtn.addEventListener('click', () => {
+                if (window.carrito && window.carrito.length > 0) {
+                    alert('¡Gracias por tu reserva! Pronto nos pondremos en contacto contigo para confirmar los detalles.');
+                    if (typeof window.vaciarCarrito === 'function') {
+                        window.vaciarCarrito();
+                    }
+                    if (typeof window.actualizarCarrito === 'function') {
+                        window.actualizarCarrito();
+                    }
+                    carritoLateral.classList.remove('activo');
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                } else {
+                    alert('Por favor, agrega al menos una habitación al carrito.');
+                }
+            });
+        }
+        
+        // Agregar eventos a los botones de reservar
+        botonesAgregar.forEach(boton => {
+            boton.addEventListener('click', function(e) {
+                const habitacion = this.closest('.habitacion');
+                const evento = {
+                    target: this,
+                    preventDefault: function() {}
+                };
+                
+                if (typeof window.agregarAlCarrito === 'function') {
+                    window.agregarAlCarrito(evento);
+                }
+                
+                // Mostrar notificación
+                const notificacion = document.createElement('div');
+                notificacion.className = 'notificacion';
+                notificacion.textContent = 'Habitación agregada al carrito';
+                document.body.appendChild(notificacion);
+                
+                setTimeout(() => {
+                    notificacion.classList.add('mostrar');
+                }, 10);
+                
+                setTimeout(() => {
+                    notificacion.classList.remove('mostrar');
+                    setTimeout(() => {
+                        if (document.body.contains(notificacion)) {
+                            document.body.removeChild(notificacion);
+                        }
+                    }, 300);
+                }, 3000);
+            });
+        });
+        
+        // Smooth scrolling para enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Actualizar el menú activo
+                    document.querySelectorAll('.menu a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Actualizar clase activa del menú al hacer scroll
+        window.addEventListener('scroll', function() {
+            let scrollPos = window.scrollY;
+            
+            document.querySelectorAll('.menu a[href^="#"]').forEach(link => {
+                const sectionId = link.getAttribute('href');
+                if (sectionId === '#') return;
+                
+                const section = document.querySelector(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        document.querySelectorAll('.menu a').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            });
+        });
+    }
+    
+    // Inicializar el carrito cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', manejarCarrito);
+</script>
+{% endblock %}

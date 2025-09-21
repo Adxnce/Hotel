@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Reservas - Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Reserva de Habitaciones</h1>
+        
+        <div class="habitaciones">
+            <div class="habitacion" data-tipo="sencilla" data-precio="100">
+                <h3>Habitación Sencilla</h3>
+                <p>Precio por noche: $100</p>
+                <button class="agregar">Agregar al carrito</button>
+            </div>
+            
+            <div class="habitacion" data-tipo="doble" data-precio="180">
+                <h3>Habitación Doble</h3>
+                <p>Precio por noche: $180</p>
+                <button class="agregar">Agregar al carrito</button>
+            </div>
+            
+            <div class="habitacion" data-tipo="suite" data-precio="300">
+                <h3>Suite</h3>
+                <p>Precio por noche: $300</p>
+                <button class="agregar">Agregar al carrito</button>
+            </div>
+        </div>
+        
+        <div class="carrito">
+            <h2>Tu Carrito</h2>
+            <div id="items-carrito">
+                <!-- Los elementos del carrito se agregarán aquí -->
+                <p class="carrito-vacio">El carrito está vacío</p>
+            </div>
+            <div class="total">
+                <h3>Total a pagar: $<span id="total">0</span></h3>
+            </div>
+            <button id="vaciar-carrito">Vaciar Carrito</button>
+        </div>
+    </div>
+
+    <script src="carrito.js"></script>
+</body>
+</html>
