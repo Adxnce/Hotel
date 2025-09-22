@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CA20CBB8-7894-D3C2-24A5-C67A42DF8C23" name="HABITACION">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>2EF9F157-478E-DF2D-5817-0AC7FC1C11C6</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="habitacion_id" id="CB5CF449-75E8-0433-98C0-674ECAD696D3">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>B121F798-D575-6421-0742-31C84D08863C</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo" id="4FB2BFFB-1073-1FA6-1670-B94271352CBD">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>6EDEEED5-5433-D01A-22C5-2E427CC81F26</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="capacidad" id="569332D4-C210-CB71-250F-58651F0A2C96">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>4E50223F-0965-AEC2-19CA-B2DCB58DC057</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio" id="F0877F78-0116-983A-5C99-68C7533F13B7">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>AB6865F3-7B3C-CA16-F0C9-307E74DAEF08</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RESERVA_reserva_id" id="A2278901-C002-2552-3A48-68ECA9983F69">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>AC37AE58-14E0-58E3-8E7F-FFDD8B3A2A79</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C669E98E-3756-82FB-DD0F-C82D9465240C" referredColumn="C09EBEDB-7424-5C7A-5E34-31C54BF62E34"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B0F78B05-D549-F16D-C619-AFD8CCE45031" name="HABITACION_PK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>A7712C29-6936-3616-C370-E068E42144A2</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB5CF449-75E8-0433-98C0-674ECAD696D3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="77D8BB6E-0B63-CD67-8C76-DB225234030E" name="HABITACION__IDX">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:17 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>809F0E3D-D333-8C0A-9CC7-DE5E7AB43380</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="A2278901-C002-2552-3A48-68ECA9983F69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A86D3193-4152-415F-AFAF-670B4770027D" name="HABITACION_HOTEL_FK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:16 UTC</createdTime>
+<generatorID>EE944409-AD3D-0A95-0F6F-514982B89742</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="DA5D0A6A-07D3-F2F0-476C-43D95770F350" name="HABITACION_RESERVA_FK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:27:17 UTC</createdTime>
+<generatorID>809F0E3D-D333-8C0A-9CC7-DE5E7AB43380</generatorID>
+<ownerDesignName>MR</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A2278901-C002-2552-3A48-68ECA9983F69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

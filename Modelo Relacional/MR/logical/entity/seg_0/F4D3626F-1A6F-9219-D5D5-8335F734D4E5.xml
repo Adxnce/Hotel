@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F4D3626F-1A6F-9219-D5D5-8335F734D4E5" name="CLIENTE">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:19:02 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cliente_id" id="CD339E29-752C-27A4-0ACE-C6B13B2C24F0">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:21:24 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre_1" id="82764D5B-3090-97C6-DB97-E5F4163032AD">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:21:25 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido" id="97F1C68B-2E83-50CF-92B5-D9DAB5EDDADD">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:21:25 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="correo_electronico" id="59CBC8BB-8108-29D5-1867-41E6C4E16BB6">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:21:25 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono" id="474FE127-5AB0-4A44-9DC5-52CE6B373ABD">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:21:25 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="89AA5408-E60A-CCFD-5520-736F2C19A58D" name="CLIENTE PK">
+<createdBy>adsan</createdBy>
+<createdTime>2025-09-03 18:21:31 UTC</createdTime>
+<ownerDesignName>MR</ownerDesignName>
+<engineerTo>
+<item key="5B881D39-D7F0-462B-4443-0E4B5AC5F076" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>CD339E29-752C-27A4-0ACE-C6B13B2C24F0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
