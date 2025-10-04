@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -99,14 +100,32 @@ class Reserva(models.Model):
         """Calcula la duración de la estadía en días."""
         return (self.fecha_salida - self.fecha_entrada).days
     
+    @property
+    def precio_noche(self):
+        """Obtiene el precio por noche de la habitación."""
+        # Si la habitación tiene un atributo precio_noche, lo usamos
+        if hasattr(self.habitacion, 'precio_noche'):
+            return self.habitacion.precio_noche
+        # Si no, usamos un valor por defecto
+        return 100000  # Valor por defecto de $100.000
+    
     def calcular_monto_total(self):
         """
         Calcula el monto total de la reserva basado en el precio de la habitación
         y la duración de la estadía.
-        Este método debe ser implementado cuando se defina el modelo de precios.
         """
-        # Por ahora, retornamos un valor fijo o 0
-        return 0
+        duracion = self.calcular_duracion_estadia()
+        return self.precio_noche * duracion
+    
+    @property
+    def iva(self):
+        """Calcula el IVA (19%) del monto total."""
+        return round(self.monto_total * Decimal('0.19'), 2)
+    
+    @property
+    def monto_total_con_iva(self):
+        """Calcula el monto total incluyendo IVA."""
+        return self.monto_total + self.iva
     
     def esta_activa(self):
         """Verifica si la reserva está activa (entre las fechas de entrada y salida)."""

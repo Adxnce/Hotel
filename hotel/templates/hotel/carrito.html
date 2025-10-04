@@ -1,0 +1,326 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Carrito de Compras</h2>
+    
+    <div id="carrito-contenido">
+        <!-- El contenido del carrito se cargará aquí mediante JavaScript -->
+        <div class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-2">Cargando tu carrito...</p>
+        </div>
+    </div>
+    
+    <div id="carrito-vacio" class="alert alert-info" style="display: none;">
+        <h4 class="alert-heading">Tu carrito está vacío</h4>
+        <p>Parece que aún no has agregado ninguna reserva a tu carrito.</p>
+        <hr>
+        <a href="{% url 'home' %}" class="btn btn-primary">Ver habitaciones disponibles</a>
+    </div>
+</div>
+
+<!-- Plantilla para los ítems del carrito -->
+<template id="template-item-carrito">
+    <div class="row mb-3 border-bottom pb-3 item-carrito">
+        <div class="col-md-6">
+            <h5 class="tipo-habitacion"></h5>
+            <p class="mb-1">Check-in: <span class="fecha-entrada"></span></p>
+            <p class="mb-1">Check-out: <span class="fecha-salida"></span></p>
+            <p class="mb-1">Personas: <span class="cantidad-personas"></span></p>
+        </div>
+        <div class="col-md-4 text-end">
+            <p class="mb-1">Precio por noche: $<span class="precio-noche"></span></p>
+            <p class="mb-1">Total: $<span class="precio-total"></span></p>
+        </div>
+        <div class="col-md-2 text-end">
+            <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="">Eliminar</button>
+        </div>
+    </div>
+</template>
+
+    <!-- Resumen del pedido y método de pago -->
+    <div id="resumen-pedido" class="mt-4" style="display: none;">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Resumen del pedido</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Resumen</h5>
+                        <p>Habitaciones: <span id="total-habitaciones">0</span></p>
+                        <p>Noches: <span id="total-noches">1</span></p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <h4>Total: $<span id="total-pagar">0</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Método de Pago</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'procesar_pago' %}" id="form-pago">
+                    {% csrf_token %}
+                    <input type="hidden" name="carrito_data" id="carrito-data">
+                    
+                    <div class="form-group mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="metodo_pago" id="efectivo" value="EFECTIVO" checked>
+                            <label class="form-check-label" for="efectivo">
+                                Efectivo
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="metodo_pago" id="tarjeta" value="TARJETA">
+                            <label class="form-check-label" for="tarjeta">
+                                Tarjeta de Crédito/Débito
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="metodo_pago" id="transferencia" value="TRANSFERENCIA">
+                            <label class="form-check-label" for="transferencia">
+                                Transferencia Bancaria
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary me-md-2">Seguir reservando</a>
+                        <button type="submit" class="btn btn-primary" id="btn-pagar">
+                            <i class="fas fa-credit-card me-2"></i>Pagar $<span id="monto-total">0</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carritoContenido = document.getElementById('carrito-contenido');
+        const carritoVacio = document.getElementById('carrito-vacio');
+        const resumenPedido = document.getElementById('resumen-pedido');
+        const totalHabitaciones = document.getElementById('total-habitaciones');
+        const totalNoches = document.getElementById('total-noches');
+        const totalPagar = document.getElementById('total-pagar');
+        const montoTotal = document.getElementById('monto-total');
+        const carritoData = document.getElementById('carrito-data');
+        const formPago = document.getElementById('form-pago');
+        
+        // Cargar carrito desde localStorage
+        function cargarCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+            if (carrito.length === 0) {
+                carritoContenido.style.display = 'none';
+                carritoVacio.style.display = 'block';
+                resumenPedido.style.display = 'none';
+                return;
+            }
+            
+            // Mostrar elementos del carrito
+            carritoContenido.innerHTML = '';
+            const template = document.getElementById('template-item-carrito');
+            
+            let total = 0;
+            
+            carrito.forEach((item, index) => {
+                const clone = template.content.cloneNode(true);
+                
+                // Calcular total
+                const precioTotal = item.precio || 0;
+                total += precioTotal;
+                
+                // Llenar datos
+                clone.querySelector('.tipo-habitacion').textContent = `Habitación ${item.tipo || 'No especificada'}`;
+                clone.querySelector('.fecha-entrada').textContent = item.fecha_entrada || 'No especificada';
+                clone.querySelector('.fecha-salida').textContent = item.fecha_salida || 'No especificada';
+                clone.querySelector('.cantidad-personas').textContent = item.cantidad_personas || 1;
+                clone.querySelector('.precio-noche').textContent = item.precio ? item.precio.toLocaleString() : '0';
+                clone.querySelector('.precio-total').textContent = precioTotal.toLocaleString();
+                clone.querySelector('.btn-eliminar').dataset.id = index;
+                
+                // Agregar evento de eliminación
+                const btnEliminar = clone.querySelector('.btn-eliminar');
+                btnEliminar.addEventListener('click', function() {
+                    eliminarDelCarrito(index);
+                });
+                
+                carritoContenido.appendChild(clone);
+            });
+            
+            // Actualizar resumen
+            totalHabitaciones.textContent = carrito.length;
+            montoTotal.textContent = total.toLocaleString();
+            totalPagar.textContent = total.toLocaleString();
+            
+            // Guardar datos del carrito en el formulario oculto
+            carritoData.value = JSON.stringify(carrito);
+            
+            // Mostrar resumen
+            carritoVacio.style.display = 'none';
+            resumenPedido.style.display = 'block';
+        }
+        
+        // Eliminar ítem del carrito
+        function eliminarDelCarrito(index) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            // Actualizar contador en el menú
+            actualizarContadorCarrito();
+            
+            // Recargar la vista del carrito
+            cargarCarrito();
+        }
+        
+        // Actualizar contador del carrito en el menú
+        function actualizarContadorCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const contador = document.getElementById('contador-carrito');
+            if (contador) {
+                contador.textContent = carrito.length;
+            }
+        }
+        
+        // Función para obtener el token CSRF
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Manejar envío del formulario
+        if (formPago) {
+            formPago.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const metodoPago = document.querySelector('input[name="metodo_pago"]:checked')?.value;
+                const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+                
+                if (carrito.length === 0) {
+                    alert('No hay elementos en el carrito para procesar.');
+                    return;
+                }
+                
+                // Validaciones adicionales según el método de pago
+                if (metodoPago === 'TARJETA') {
+                    if (!confirm('¿Estás seguro de que deseas proceder con el pago con tarjeta?')) {
+                        return false;
+                    }
+                }
+                
+                // Mostrar mensaje de procesamiento
+                const btnPagar = document.querySelector('#form-pago button[type="submit"]');
+                if (btnPagar) {
+                    btnPagar.disabled = true;
+                    btnPagar.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Procesando...';
+                }
+                
+                try {
+                    // Obtener el token CSRF
+                    const csrftoken = getCookie('csrftoken');
+                    
+                    // Mostrar los datos del carrito antes de enviar
+                    console.log('=== DATOS DEL CARRITO A ENVIAR ===');
+                    console.log('Carrito completo:', carrito);
+                    console.log('Método de pago seleccionado:', metodoPago || 'EFECTIVO');
+                    
+                    // Verificar la estructura de cada elemento del carrito
+                    carrito.forEach((item, index) => {
+                        console.log(`\n=== Ítem ${index + 1} ===`);
+                        console.log('Tipo de habitación:', item.tipo);
+                        console.log('ID de habitación:', item.habitacion_id || 'No definido');
+                        console.log('Precio por noche:', item.precio);
+                        console.log('Fecha de entrada:', item.fecha_entrada);
+                        console.log('Fecha de salida:', item.fecha_salida);
+                        console.log('Cantidad de personas:', item.cantidad_personas);
+                        console.log('Todos los campos del ítem:', item);
+                    });
+                    
+                    // Preparar los datos a enviar
+                    const data = {
+                        'metodo_pago': metodoPago || 'EFECTIVO',
+                        'carrito_data': JSON.stringify(carrito)
+                    };
+                    
+                    console.log('\n=== DATOS A ENVIAR AL SERVIDOR ===');
+                    console.log(JSON.stringify(data, null, 2));
+                    
+                    try {
+                        // Enviar los datos al servidor
+                        console.log('\nEnviando solicitud a:', '{% url "procesar_pago" %}');
+                        const response = await fetch('{% url "procesar_pago" %}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': csrftoken,
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+                            body: JSON.stringify(data)
+                        });
+                        
+                        const result = await response.json();
+                        console.log('Respuesta del servidor:', result);
+                        
+                        if (response.ok && result.status === 'success') {
+                            // Limpiar el carrito después de una compra exitosa
+                            localStorage.removeItem('carrito');
+                            actualizarContadorCarrito();
+                            
+                            // Redirigir a la página de recibo
+                            if (result.redirect_url) {
+                                console.log('Redirigiendo a:', result.redirect_url);
+                                window.location.href = result.redirect_url;
+                            } else if (result.reserva_id) {
+                                const url = '{% url "ver_recibo" 0 %}'.replace('0', result.reserva_id);
+                                console.log('Redirigiendo a recibo con ID:', result.reserva_id, 'URL:', url);
+                                window.location.href = url;
+                            } else {
+                                throw new Error('No se recibió una URL de redirección válida');
+                            }
+                        } else {
+                            throw new Error(result.error || 'Error al procesar el pago');
+                        }
+                    } catch (error) {
+                        console.error('Error en la solicitud:', error);
+                        throw error; // Re-lanzar para que sea manejado por el catch externo
+                    }
+                } catch (error) {
+                    console.error('Error al procesar el pago:', error);
+                    alert('Ocurrió un error al procesar el pago: ' + error.message);
+                    if (btnPagar) {
+                        btnPagar.disabled = false;
+                        btnPagar.innerHTML = 'Pagar';
+                    }
+                }
+            });
+        }
+        
+        // Cargar el carrito al iniciar
+        cargarCarrito();
+    });
+</script>
+{% endblock %}

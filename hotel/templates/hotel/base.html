@@ -34,10 +34,10 @@
                 {% else %}
                     <a href="{% url 'login' %}" class="btn btn-outline-light">Iniciar Sesión</a>
                 {% endif %}
-                <div class="carrito-icono" id="abrir-carrito">
+                <a href="{% url 'ver_carrito' %}" class="carrito-icono" id="abrir-carrito">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="contador-carrito" id="contador-carrito">0</span>
-                </div>
+                </a>
             </div>
         </div>
     </nav>
