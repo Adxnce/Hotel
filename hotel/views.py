@@ -14,6 +14,8 @@ from django.db import transaction
 from .forms import ReservaForm
 from .models import Habitacion, Reserva
 from datetime import datetime, timedelta
+from django.contrib import messages
+
 
 def login_redirect(request):
     """Redirige al usuario a la página de login."""
