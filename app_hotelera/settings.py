@@ -139,6 +139,7 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'home'  # Nombre de la URL a la que redirigir después del login
 LOGOUT_REDIRECT_URL = 'login'  # Nombre de la URL a la que redirigir después del logout
 
+
 # Configuración de sesión
 SESSION_COOKIE_AGE = 1209600  # 2 semanas en segundos
 SESSION_SAVE_EVERY_REQUEST = True  # Renovar la sesión con cada petición
