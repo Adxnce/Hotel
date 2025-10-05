@@ -31,7 +31,12 @@
                         </ul>
                         <div class="precio">
                             <span>$100</span> / noche
-                            <button class="btn-agregar">Reservar Ahora</button>
+                            <button class="btn-reservar" 
+                                    data-habitacion-id="{{ habitacion.id }}" 
+                                    data-habitacion-tipo="{{ habitacion.tipo }}" 
+                                    data-habitacion-precio="{{ habitacion.precio_noche|default:100000 }}">
+                                Reservar Ahora
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -50,7 +55,12 @@
                         </ul>
                         <div class="precio">
                             <span>$180</span> / noche
-                            <button class="btn-agregar">Reservar Ahora</button>
+                            <button class="btn-reservar" 
+                                    data-habitacion-id="{{ habitacion.id }}" 
+                                    data-habitacion-tipo="{{ habitacion.tipo }}" 
+                                    data-habitacion-precio="{{ habitacion.precio_noche|default:100000 }}">
+                                Reservar Ahora
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +80,12 @@
                         </ul>
                         <div class="precio">
                             <span>$300</span> / noche
-                            <button class="btn-agregar">Reservar Ahora</button>
+                            <button class="btn-reservar" 
+                                    data-habitacion-id="{{ habitacion.id }}" 
+                                    data-habitacion-tipo="{{ habitacion.tipo }}" 
+                                    data-habitacion-precio="{{ habitacion.precio_noche|default:100000 }}">
+                                Reservar Ahora
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -204,6 +219,91 @@
 {% endblock %}
 {% block extra_js %}
 <script>
+    // Función para agregar una habitación al carrito
+    window.agregarAlCarrito = function(evento) {
+        evento.preventDefault();
+        
+        const boton = evento.target.closest('.btn-reservar');
+        if (!boton) return;
+        
+        const habitacion = boton.closest('.habitacion');
+        const tipoHabitacion = habitacion.dataset.tipo;
+        const precio = parseFloat(habitacion.dataset.precio) || 0;
+        
+        // Obtener fechas del formulario
+        const fechaEntrada = document.getElementById('fecha_entrada')?.value || new Date().toISOString().split('T')[0];
+        const fechaSalida = document.getElementById('fecha_salida')?.value || new Date(Date.now() + 86400000).toISOString().split('T')[0];
+        const cantidadPersonas = document.getElementById('cantidad_personas')?.value || 1;
+        
+        // Crear objeto de reserva
+        const reserva = {
+            habitacion_id: habitacion.dataset.habitacionId || Date.now(),
+            tipo: tipoHabitacion,
+            precio: precio,
+            fecha_entrada: fechaEntrada,
+            fecha_salida: fechaSalida,
+            cantidad_personas: cantidadPersonas,
+            monto_total: precio // Por defecto, el monto total es igual al precio por una noche
+        };
+        
+        // Obtener el carrito actual del localStorage o crear uno nuevo
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        
+        // Verificar si la habitación ya está en el carrito
+        const existeEnCarrito = carrito.some(item => item.habitacion_id === reserva.habitacion_id);
+        
+        if (!existeEnCarrito) {
+            // Agregar la reserva al carrito
+            carrito.push(reserva);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            // Actualizar el contador del carrito
+            actualizarContadorCarrito();
+            
+            // Mostrar notificación
+            mostrarNotificacion('Habitación agregada al carrito');
+            
+            // Redirigir al carrito después de un breve retraso
+            setTimeout(() => {
+                window.location.href = '{% url "ver_carrito" %}';
+            }, 1000);
+        } else {
+            mostrarNotificacion('Esta habitación ya está en tu carrito');
+        }
+        
+        return false;
+    };
+    
+    // Función para actualizar el contador del carrito
+    function actualizarContadorCarrito() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const contador = document.getElementById('contador-carrito');
+        if (contador) {
+            contador.textContent = carrito.length;
+        }
+    }
+    
+    // Función para mostrar notificaciones
+    function mostrarNotificacion(mensaje) {
+        const notificacion = document.createElement('div');
+        notificacion.className = 'notificacion';
+        notificacion.textContent = mensaje;
+        document.body.appendChild(notificacion);
+        
+        setTimeout(() => {
+            notificacion.classList.add('mostrar');
+        }, 10);
+        
+        setTimeout(() => {
+            notificacion.classList.remove('mostrar');
+            setTimeout(() => {
+                if (document.body.contains(notificacion)) {
+                    document.body.removeChild(notificacion);
+                }
+            }, 300);
+        }, 3000);
+    }
+    
     // Función para manejar el carrito
     function manejarCarrito() {
         // Abrir/cerrar carrito
@@ -211,7 +311,7 @@
         const carritoLateral = document.getElementById('carrito-lateral');
         const cerrarCarrito = document.getElementById('cerrar-carrito');
         const overlay = document.getElementById('overlay');
-        const botonesAgregar = document.querySelectorAll('.btn-agregar');
+        const botonesReservar = document.querySelectorAll('.btn-reservar');
         
         if (!abrirCarrito || !carritoLateral || !cerrarCarrito || !overlay) {
             console.error('No se encontraron todos los elementos necesarios para el carrito');
@@ -258,37 +358,8 @@
         }
         
         // Agregar eventos a los botones de reservar
-        botonesAgregar.forEach(boton => {
-            boton.addEventListener('click', function(e) {
-                const habitacion = this.closest('.habitacion');
-                const evento = {
-                    target: this,
-                    preventDefault: function() {}
-                };
-                
-                if (typeof window.agregarAlCarrito === 'function') {
-                    window.agregarAlCarrito(evento);
-                }
-                
-                // Mostrar notificación
-                const notificacion = document.createElement('div');
-                notificacion.className = 'notificacion';
-                notificacion.textContent = 'Habitación agregada al carrito';
-                document.body.appendChild(notificacion);
-                
-                setTimeout(() => {
-                    notificacion.classList.add('mostrar');
-                }, 10);
-                
-                setTimeout(() => {
-                    notificacion.classList.remove('mostrar');
-                    setTimeout(() => {
-                        if (document.body.contains(notificacion)) {
-                            document.body.removeChild(notificacion);
-                        }
-                    }, 300);
-                }, 3000);
-            });
+        botonesReservar.forEach(boton => {
+            boton.addEventListener('click', window.agregarAlCarrito);
         });
         
         // Smooth scrolling para enlaces del menú
