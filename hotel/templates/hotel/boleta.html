@@ -1,0 +1,146 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Encabezado de la boleta -->
+            <div class="text-center mb-5">
+                <h2 class="text-primary">¡Reserva Confirmada!</h2>
+                <p class="text-muted">Gracias por tu compra. Aquí tienes el resumen de tu reserva.</p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <a href="{% url 'home' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-home me-2"></i>Volver al inicio
+                    </a>
+                    <button onclick="window.print()" class="btn btn-primary">
+                        <i class="fas fa-print me-2"></i>Imprimir boleta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Datos del hotel -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Datos del Hotel</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>{{ reserva.habitacion.hotel.nombre }}</h5>
+                            <p class="mb-1">{{ reserva.habitacion.hotel.direccion }}</p>
+                            <p class="mb-1">Categoría: {{ reserva.habitacion.hotel.categoria }}</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <p class="mb-1">N° de Reserva: <strong>#{{ reserva.reserva_id|stringformat:"06d" }}</strong></p>
+                            <p class="mb-1">Fecha: {{ reserva.fecha_creacion|date:"d/m/Y H:i" }}</p>
+                            <p class="mb-1">Estado: <span class="badge bg-success">{{ reserva.get_estado_display }}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalles de la reserva -->
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Detalles de la Reserva</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Habitación</th>
+                                    <th>Check-in</th>
+                                    <th>Check-out</th>
+                                    <th>Noches</th>
+                                    <th>Personas</th>
+                                    <th class="text-end">Precio por noche</th>
+                                    <th class="text-end">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ reserva.habitacion.tipo }}</td>
+                                    <td>{{ reserva.fecha_entrada|date:"d/m/Y" }}</td>
+                                    <td>{{ reserva.fecha_salida|date:"d/m/Y" }}</td>
+                                    <td>{{ reserva.duracion_estadia }}</td>
+                                    <td>{{ reserva.cantidad_personas }}</td>
+                                    <td class="text-end">${{ reserva.habitacion.precio_noche|default:0 }}</td>
+                                    <td class="text-end">${{ reserva.monto_total|default:0 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen de pago -->
+            <div class="row">
+                <div class="col-md-6 offset-md-6">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Resumen de Pago</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <th>Subtotal:</th>
+                                        <td class="text-end">${{ reserva.monto_total|default:0 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA (19%):</th>
+                                        <td class="text-end">${{ reserva.iva|default:0 }}</td>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <th>Total a pagar:</th>
+                                        <th class="text-end">${{ reserva.monto_total_con_iva|default:reserva.monto_total|default:0 }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Método de pago:</th>
+                                        <td class="text-end">{{ reserva.get_metodo_pago_display }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="alert alert-info mt-4" role="alert">
+                <h5 class="alert-heading">¡Importante!</h5>
+                <p>Por favor, presenta esta boleta al hacer check-in en la recepción del hotel.</p>
+                <p>Para cualquier consulta, contáctanos a <a href="mailto:contacto@hotel.com">contacto@hotel.com</a> o al teléfono +56 9 1234 5678.</p>
+                <hr>
+                <p class="mb-0">Gracias por elegirnos. ¡Esperamos que disfrutes tu estadía!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    @media print {
+        .no-print {
+            display: none !important;
+        }
+        body {
+            font-size: 12px;
+        }
+        .card {
+            border: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #f8f9fa !important;
+            color: #000 !important;
+        }
+        .btn {
+            display: none !important;
+        }
+    }
+</style>
+{% endblock %}

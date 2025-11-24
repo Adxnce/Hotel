@@ -1,0 +1,141 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h2 class="mb-0">¡Reserva Confirmada!</h2>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                        <h3 class="mt-3">¡Pago Completado con Éxito!</h3>
+                        <p class="text-muted">Número de reserva: #{{ reserva.id|stringformat:"06d" }}</p>
+                        <p class="text-muted">Fecha: {{ fecha_actual|date:"d/m/Y H:i" }}</p>
+                    </div>
+
+                    <div class="resumen-pedido">
+                        <h4 class="mb-3">Detalles de la Reserva</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Habitación</th>
+                                        <th>Check-in</th>
+                                        <th>Check-out</th>
+                                        <th>Noches</th>
+                                        <th>Personas</th>
+                                        <th class="text-end">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ reserva.habitacion.tipo }}</td>
+                                        <td>{{ reserva.fecha_entrada|date:"d/m/Y" }}</td>
+                                        <td>{{ reserva.fecha_salida|date:"d/m/Y" }}</td>
+                                        <td>{{ noches }}</td>
+                                        <td>{{ reserva.cantidad_personas }}</td>
+                                        <td class="text-end">${{ reserva.monto_total|floatformat:0 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5>Método de Pago</h5>
+                                <p class="mb-0">
+                                    {% if reserva.metodo_pago == 'EFECTIVO' %}
+                                        <i class="fas fa-money-bill-wave me-2"></i> Efectivo
+                                    {% else %}
+                                        <i class="fas fa-credit-card me-2"></i> Tarjeta de Crédito/Débito
+                                    {% endif %}
+                                </p>
+                                <p class="text-muted small mt-2">
+                                    Estado: 
+                                    <span class="badge bg-success">Pagado</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6 text-md-end">
+                                <h5>Total Pagado</h5>
+                                <h3 class="text-primary">${{ reserva.monto_total|floatformat:0 }}</h3>
+                                <p class="text-muted small">
+                                    Incluye impuestos y cargos
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <h5><i class="fas fa-info-circle me-2"></i>Información Importante</h5>
+                            <ul class="mb-0">
+                                <li>Presenta este comprobante al hacer check-in en la recepción del hotel.</li>
+                                <li>Horario de check-in: 15:00 hrs</li>
+                                <li>Horario de check-out: 12:00 hrs</li>
+                                <li>Para cualquier consulta, contáctanos a contacto@hotel.com</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <a href="{% url 'home' %}" class="btn btn-outline-primary me-md-2">
+                            <i class="fas fa-home me-1"></i> Volver al Inicio
+                        </a>
+                        <button onclick="window.print()" class="btn btn-primary">
+                            <i class="fas fa-print me-1"></i> Imprimir Comprobante
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Limpiar el carrito después de mostrar el recibo
+        if (localStorage.getItem('carrito')) {
+            localStorage.removeItem('carrito');
+            // Actualizar el contador del carrito
+            const contador = document.getElementById('contador-carrito');
+            if (contador) {
+                contador.textContent = '0';
+            }
+        }
+
+        // Configurar el botón de impresión
+        document.addEventListener('afterprint', function() {
+            // Redirigir al inicio después de imprimir
+            // window.location.href = "{% url 'home' %}";
+        });
+    });
+</script>
+
+<style>
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        .card, .card * {
+            visibility: visible;
+        }
+        .card {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            border: none;
+        }
+        .btn {
+            display: none !important;
+        }
+        .no-print {
+            display: none !important;
+        }
+    }
+</style>
+{% endblock %}
